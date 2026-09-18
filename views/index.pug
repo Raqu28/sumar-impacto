@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  .caja
+    h2 Descripcion del Proyecto
+    p= descripcion
+
+  .caja
+    h3 Integrantes del Grupo - #{equipo}
+    ul
+      each integrante in integrantes
+        li= integrante
+
+  .caja
+    h3 Proyectos Comunitarios Vigentes
+    table
+      thead
+        tr
+          th ID
+          th Nombre
+          th Organizacion
+          th Categoria
+          th Meta ($)
+          th Recaudado ($)
+      tbody
+        each proyecto in proyectos
+          tr
+            td= proyecto.id
+            td= proyecto.nombre
+            td= proyecto.organizacion
+            td= proyecto.categoria
+            td= proyecto.montoMeta
+            td= proyecto.recaudado

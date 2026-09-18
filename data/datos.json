@@ -1,0 +1,76 @@
+{
+  "personas": [
+    {
+      "id": 1,
+      "nombre": "Sonia Raquel Andrada",
+      "email": "sonia.andrada@ifts29.edu.ar",
+      "tipo": "responsable"
+    },
+    {
+      "id": 2,
+      "nombre": "Guillermo Chacon",
+      "email": "guillermo.chacon@ifts29.edu.ar",
+      "tipo": "donante"
+    },
+    {
+      "id": 3,
+      "nombre": "Eitel Hugo Belinzoni",
+      "email": "eitel.belinzoni@ifts29.edu.ar",
+      "tipo": "donante"
+    },
+    {
+      "id": 4,
+      "nombre": "Emilia Sosa",
+      "email": "emilia.sosa@ifts29.edu.ar",
+      "tipo": "donante"
+    }
+  ],
+  "proyectos": [
+    {
+      "id": 1,
+      "nombre": "Alimentos para Comedor Barrial",
+      "organizacion": "Comedor Los Pibes",
+      "categoria": "Alimentacion",
+      "montoMeta": 50000,
+      "recaudado": 20000
+    },
+    {
+      "id": 2,
+      "nombre": "Equipamiento Escolar Rural",
+      "organizacion": "Fundacion Educando",
+      "categoria": "Educacion",
+      "montoMeta": 80000,
+      "recaudado": 20100
+    }
+  ],
+  "donaciones": [
+    {
+      "id": 1,
+      "personaId": 2,
+      "proyectoId": 1,
+      "monto": 15000,
+      "fecha": "2026-09-10"
+    },
+    {
+      "id": 2,
+      "personaId": 3,
+      "proyectoId": 2,
+      "monto": 20000,
+      "fecha": "2026-09-12"
+    },
+    {
+      "id": 3,
+      "personaId": 4,
+      "proyectoId": 1,
+      "monto": 5000,
+      "fecha": "2026-09-18"
+    },
+    {
+      "id": 4,
+      "personaId": 3,
+      "proyectoId": 2,
+      "monto": 100,
+      "fecha": "2026-09-18"
+    }
+  ]
+}

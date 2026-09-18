@@ -1,0 +1,31 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title= titulo || "Sumar Impacto"
+    link(rel="stylesheet", href="/styles.css")
+  body
+    header
+      h1 Sumar Impacto - Sistema de Donaciones
+      nav
+        a(href="/") Inicio
+        |  | 
+        a(href="/proyectos") Proyectos
+        |  | 
+        a(href="/donaciones/nueva") Registrar Donacion
+        |  | 
+        a(href="/api/personas" target="_blank") API Personas
+        |  | 
+        a(href="/api/proyectos" target="_blank") API Proyectos
+        |  | 
+        a(href="/api/donaciones" target="_blank") API Donaciones
+
+    hr
+
+    block content
+
+    hr
+
+    footer
+      p Desarrollo de Software Web - Backend | Proyecto Primera Entrega

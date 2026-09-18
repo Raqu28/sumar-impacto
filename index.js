@@ -1,50 +1,42 @@
-const express = require('express');
+require("dotenv").config();
+const express = require("express");
 const app = express();
-const puerto = 3000;
 
-// 📌 Importar los 3 módulos
-const personas = require('./personas');
-const proyectos = require('./proyectos');
-const donaciones = require('./donaciones');
+const PORT = process.env.PORT || 3000;
 
-// Configuración
+// Importacion de enrutadores modulares
+const personasRoutes = require("./routes/personasRoutes");
+const proyectosRoutes = require("./routes/proyectosRoutes");
+const donacionesRoutes = require("./routes/donacionesRoutes");
+const webRoutes = require("./routes/webRoutes");
+
+// Middlewares de aplicacion
 app.use(express.json());
-app.set('view engine', 'pug');
-app.set('views', './vistas');
+app.use(express.urlencoded({ extended: true }));
 
-// 🌐 Ruta web con Pug
-app.get('/', (req, res) => {
-  res.render('index', {
-    titulo: "SumarImpacto — Organización sin fines de lucro",
-    integrantes: [
-      "Sonia Raquel Andrada",
-      "Guillermo Chacón",
-      "Eitel Hugo Belinzoni",
-      "Emilia Sosa"
-    ],
-    descripcion: "Plataforma para conectar organizaciones sociales con donantes"
-  });
+// Configuracion del motor de plantillas Pug
+app.set("view engine", "pug");
+app.set("views", "./views");
+
+// Servicio de archivos estaticos (CSS)
+app.use(express.static("public"));
+
+// Montaje de rutas de interfaz web
+app.use("/", webRoutes);
+
+// Montaje de rutas API REST
+app.use("/api/personas", personasRoutes);
+app.use("/api/proyectos", proyectosRoutes);
+app.use("/api/donaciones", donacionesRoutes);
+
+// Manejador para rutas no encontradas
+app.use((req, res) => {
+    if (req.accepts("html")) {
+        return res.status(404).send("Pagina no encontrada");
+    }
+    res.status(404).json({ mensaje: "Recurso no encontrado" });
 });
 
-// 📦 MÓDULO 1: PERSONAS
-app.get('/api/personas', personas.obtenerTodas);
-app.get('/api/personas/:id', personas.obtenerPorId);
-app.post('/api/personas', personas.crear);
-app.put('/api/personas/:id', personas.modificar);
-app.delete('/api/personas/:id', personas.eliminar);
-
-// 📦 MÓDULO 2: PROYECTOS
-app.get('/api/proyectos', proyectos.obtenerTodos);
-app.get('/api/proyectos/:id', proyectos.obtenerPorId);
-app.post('/api/proyectos', proyectos.crear);
-app.put('/api/proyectos/:id', proyectos.modificar);
-app.delete('/api/proyectos/:id', proyectos.eliminar);
-
-// 📦 MÓDULO 3: DONACIONES (los RELACIONA)
-app.get('/api/donaciones', donaciones.obtenerTodas);
-app.post('/api/donaciones', donaciones.crear);
-
-// 🚀 Encender servidor
-app.listen(puerto, () => {
-  console.log(`✅ Servidor corriendo en http://localhost:${puerto}`);
+app.listen(PORT, () => {
+    console.log("Servidor corriendo en puerto " + PORT);
 });
