@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h2 Proyectos Disponibles para Donacion
+
+  table
+    thead
+      tr
+        th ID
+        th Nombre
+        th Organizacion
+        th Categoria
+        th Meta ($)
+        th Recaudado ($)
+    tbody
+      each proyecto in proyectos
+        tr
+          td= proyecto.id
+          td= proyecto.nombre
+          td= proyecto.organizacion
+          td= proyecto.categoria
+          td= proyecto.montoMeta
+          td= proyecto.recaudado
+
+  p
+    a(href="/donaciones/nueva") Realizar una donacion para un proyecto
