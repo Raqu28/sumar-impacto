@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f7f9fa;
+    color: #333333;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+header h1 {
+    color: #1a365d;
+    margin-bottom: 8px;
+}
+
+nav a {
+    color: #2b6cb0;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #d2d6dc;
+    margin: 20px 0;
+}
+
+.caja {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: #ffffff;
+}
+
+th, td {
+    padding: 10px 12px;
+    border: 1px solid #cbd5e0;
+    text-align: left;
+}
+
+th {
+    background-color: #edf2f7;
+    color: #2d3748;
+}
+
+form {
+    max-width: 500px;
+    background: #ffffff;
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #2b6cb0;
+    color: #ffffff;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #2c5282;
+}
+
+footer {
+    margin-top: 30px;
+    font-size: 13px;
+    color: #718096;
+}

@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title= titulo
+    style.
+      body { font-family: Arial; padding: 30px; background: #f0f0f0; }
+      h1 { color: #2c3e50; }
+      .caja { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+      ul { line-height: 1.8; }
+      hr { border: none; border-top: 1px solid #eee; margin: 20px 0; }
+  body
+    .caja
+      h1= titulo
+      p= mensaje
+      h3 Integrantes del grupo:
+        ul
+          each integrante in integrantes
+            li= integrante
+      hr
+      p ✅ Funcionando con Node.js + Express + Pug

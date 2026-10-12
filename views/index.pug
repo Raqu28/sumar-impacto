@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  .caja
+    h2 Descripcion del Proyecto
+    p= descripcion
+
+  .caja
+    h3 Integrantes del Grupo - #{equipo}
+    ul
+      each integrante in integrantes
+        li= integrante
+
+  .caja
+    h3 Proyectos Comunitarios Vigentes (Persistidos en MongoDB)
+    table
+      thead
+        tr
+          th Nombre
+          th Organizacion
+          th Categoria
+          th Meta ($)
+          th Recaudado ($)
+          th Progreso (%)
+      tbody
+        each proyecto in proyectos
+          tr
+            td= proyecto.nombre
+            td= proyecto.organizacion
+            td= proyecto.categoria
+            td= proyecto.montoMeta
+            td= proyecto.recaudado
+            td= `${Math.min(100, Math.round((proyecto.recaudado / proyecto.montoMeta) * 100))}%`

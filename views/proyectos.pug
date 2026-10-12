@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h2 Catalogo de Proyectos Solidarios (MongoDB)
+
+  table
+    thead
+      tr
+        th Nombre
+        th Organizacion
+        th Categoria
+        th Meta ($)
+        th Recaudado ($)
+        th Avance
+    tbody
+      each proyecto in proyectos
+        tr
+          td= proyecto.nombre
+          td= proyecto.organizacion
+          td= proyecto.categoria
+          td= `$${proyecto.montoMeta}`
+          td= `$${proyecto.recaudado}`
+          td= `${Math.min(100, Math.round((proyecto.recaudado / proyecto.montoMeta) * 100))}%`
+
+  p(style="margin-top: 20px;")
+    a(href="/donaciones/nueva", style="display: inline-block; background-color: #2b6cb0; color: white; padding: 10px 16px; border-radius: 4px; text-decoration: none;") Realizar una donacion para un proyecto

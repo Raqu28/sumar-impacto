@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h2 Formulario de Registro de Donacion
+
+  form(method="POST", action="/donaciones/nueva")
+    label(for="personaId") Donante Registrado:
+    select(name="personaId", id="personaId", required)
+      option(value="") Seleccione un donante...
+      each donante in donantes
+        option(value=donante._id)= `${donante.nombre} (${donante.email})`
+
+    label(for="proyectoId") Proyecto Destino:
+    select(name="proyectoId", id="proyectoId", required)
+      option(value="") Seleccione un proyecto...
+      each proyecto in proyectos
+        option(value=proyecto._id)= `${proyecto.nombre} - ${proyecto.organizacion}`
+
+    label(for="monto") Monto a Donar ($):
+    input(type="number", name="monto", id="monto", min="1", step="any", placeholder="Ej: 5000", required)
+
+    button(type="submit") Confirmar Donacion en MongoDB

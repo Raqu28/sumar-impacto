@@ -1,0 +1,14 @@
+[
+  {
+    "id": 2,
+    "nombre": "Cuaderno Ecológico",
+    "precio": 850,
+    "categoria": "Papelería"
+  },
+  {
+    "id": 3,
+    "nombre": "Alimentos para Comedor Barrial",
+    "precio": 50000,
+    "categoria": "Alimentación"
+  }
+]
