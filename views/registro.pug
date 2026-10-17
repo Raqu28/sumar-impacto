@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h2 Crear cuenta
+
+  form(method="POST", action="/registro")
+    label(for="nombre") Nombre:
+    input(type="text", name="nombre", id="nombre", autocomplete="name", required)
+
+    label(for="email") Email:
+    input(type="email", name="email", id="email", autocomplete="email", required)
+
+    label(for="tipo") Tipo de cuenta:
+    select(name="tipo", id="tipo", required)
+      option(value="") Seleccione un tipo...
+      option(value="donante") Donante
+      option(value="responsable") Responsable
+
+    button(type="submit") Registrarme
