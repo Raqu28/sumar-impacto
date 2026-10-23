@@ -44,3 +44,4 @@ await conectarDB();
 app.listen(PORT, () => {
   console.log(`Servidor de Sumar Impacto corriendo en http://localhost:${PORT}`);
 });
+
