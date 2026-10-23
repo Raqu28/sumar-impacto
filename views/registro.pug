@@ -7,18 +7,25 @@ block content
     label(for="nombre") Nombre:
     input(type="text", name="nombre", id="nombre", autocomplete="name", required)
 
+    div
     label(for="email") Email:
     input(type="email", name="email", id="email", autocomplete="email", required)
 
+    div
+    br
     label(for="password") Contraseña:
     input(type="password", name="password", id="password", autocomplete="new-password", required)
 
+    div
+    br
     label(for="tipo") Tipo de cuenta:
     select(name="tipo", id="tipo", required)
       option(value="") Seleccione un tipo...
       option(value="donante") Donante
       option(value="responsable") Responsable
 
+    div
+    br
     button(type="submit") Registrarme
 
   p

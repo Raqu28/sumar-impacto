@@ -4,12 +4,17 @@ block content
   h2 Iniciar sesión
 
   form(method="POST", action="/login")
+    div 
     label(for="email") Email:
     input(type="email", name="email", id="email", autocomplete="email", required)
 
+    div 
+    br
     label(for="password") Contraseña:
     input(type="password", name="password", id="password", autocomplete="current-password", required)
 
+    div
+    br
     button(type="submit") Iniciar sesión
 
   p
