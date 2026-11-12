@@ -41,6 +41,19 @@ export const crearDonacion = async (req, res) => {
     proyecto.actualizarRecaudacion(monto);
     await proyecto.save();
 
+    // Notificacion en tiempo real via WebSocket (Socket.IO)
+    const io = req.app.get("io");
+    if (io) {
+      io.emit("nueva_donacion", {
+        donanteNombre: persona.nombre,
+        proyectoId: proyecto._id.toString(),
+        proyectoNombre: proyecto.nombre,
+        monto: Number(monto),
+        nuevoRecaudado: proyecto.recaudado,
+        progreso: Math.min(100, Math.round((proyecto.recaudado / proyecto.montoMeta) * 100))
+      });
+    }
+
     res.status(201).json({
       mensaje: "Donacion registrada exitosamente en MongoDB",
       donacion: nuevaDonacion,
