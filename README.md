@@ -4,12 +4,13 @@
 
 **Equipo de Desarrollo:** Grupo 15 - *pITzza & BirrAPI*  
 **Integrantes:**
-- Guillermo Chacón
-- Sonia Raquel Andrada
-- Eitel Hugo Belinzoni
+- Guillermo Alberto Chacón (guilecha@gmail.com)
+- Sonia Raquel Andrada (sonia.andrada@ifts29.edu.ar)
+- Eitel Hugo Belinzoni (eitel.trabajo@gmail.com)
 
 **Versión:** `v1.2.0` (SemVer)  
-**Despliegue Online:** [https://sumar-impacto.onrender.com](https://sumar-impacto.onrender.com) *(Render Web Service + MongoDB Atlas)*
+**Despliegue Online:** [https://sumar-impacto.onrender.com](https://sumar-impacto.onrender.com) *(Render Web Service + MongoDB Atlas)*  
+**Carpeta Compartida Google Drive:** [Entrega Final TP3](https://drive.google.com/drive/folders/1jnYJb85xzGsvxwEAQ6CelOgckwwOjFnE?usp=drive_link)
 
 ---
 
@@ -105,11 +106,12 @@ Copiar el archivo de plantilla `.env.example` como `.env`:
 ```bash
 cp .env.example .env
 ```
-Asegurar que `MONGO_URI` apunte a la base de datos local o de Atlas:
+Asegurar que las variables de entorno estén configuradas (localmente o con Atlas):
 ```env
 PORT=3000
 NODE_ENV=development
-MONGO_URI=mongodb://127.0.0.1:27017/sumar_impacto
+MONGO_URI=mongodb+srv://admin_impacto:AdminImpacto2026Pass@cluster0.oyfdodk.mongodb.net/sumar_impacto?retryWrites=true&w=majority
+JWT_SECRET=super_secreto_sumar_impacto_ifts29_jwt_2026
 ```
 
 ### 4. Poblado de la Base de Datos (Seed)
