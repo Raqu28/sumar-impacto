@@ -10,7 +10,7 @@
 
 **Versión:** `v1.2.0` (SemVer)  
 **Despliegue Online:** [https://sumar-impacto.onrender.com](https://sumar-impacto.onrender.com) *(Render Web Service + MongoDB Atlas)*  
-**Carpeta Compartida Google Drive:** [Entrega Final TP3](https://drive.google.com/drive/folders/1jnYJb85xzGsvxwEAQ6CelOgckwwOjFnE?usp=drive_link)
+**Carpeta Compartida Google Drive:** [Entrega Final TP3](https://drive.google.com/drive/folders/13zDkaf_ljQo74TSUvCU_nZV53U6Yhx6T)
 
 ---
 
@@ -106,13 +106,16 @@ Copiar el archivo de plantilla `.env.example` como `.env`:
 ```bash
 cp .env.example .env
 ```
-Asegurar que las variables de entorno estén configuradas (localmente o con Atlas):
+Configurar las variables de entorno tomando como base `.env.example`:
 ```env
 PORT=3000
 NODE_ENV=development
-MONGO_URI=mongodb+srv://admin_impacto:AdminImpacto2026Pass@cluster0.oyfdodk.mongodb.net/sumar_impacto?retryWrites=true&w=majority
-JWT_SECRET=super_secreto_sumar_impacto_ifts29_jwt_2026
+MONGO_URI=mongodb+srv://<usuario>:<password>@cluster0.xxxxx.mongodb.net/sumar_impacto?retryWrites=true&w=majority
+JWT_SECRET=tu_clave_secreta_jwt_2026
 ```
+
+> 🔒 **Nota de Seguridad para la Cátedra:**  
+> Por buenas prácticas de seguridad y para evitar la exposición de credenciales en un repositorio público de GitHub, los datos de acceso reales (cadena de conexión completa a MongoDB Atlas y claves de entorno) se encuentran resguardados en el archivo `.env` provisto dentro de la [Carpeta Compartida de Google Drive](https://drive.google.com/drive/folders/13zDkaf_ljQo74TSUvCU_nZV53U6Yhx6T) y en el documento técnico formal del parcial.
 
 ### 4. Poblado de la Base de Datos (Seed)
 Ejecutar el script para cargar los usuarios de prueba, personas, causas y donaciones iniciales:
