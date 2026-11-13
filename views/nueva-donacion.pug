@@ -1,22 +1,43 @@
 extends layout
 
 block content
-  h2 Formulario de Registro de Donacion
+  .caja.caja-form
+    h2 Formulario de Registro de Donación
+    p Registre un nuevo aporte solidario. La transacción impactará en MongoDB Atlas y actualizará las estadísticas en tiempo real.
 
-  form(method="POST", action="/donaciones/nueva")
-    label(for="personaId") Donante Registrado:
-    select(name="personaId", id="personaId", required)
-      option(value="") Seleccione un donante...
-      each donante in donantes
-        option(value=donante._id)= `${donante.nombre} (${donante.email})`
+    if error
+      .alerta.alerta-error
+        strong Error: 
+        span= error
 
-    label(for="proyectoId") Proyecto Destino:
-    select(name="proyectoId", id="proyectoId", required)
-      option(value="") Seleccione un proyecto...
-      each proyecto in proyectos
-        option(value=proyecto._id)= `${proyecto.nombre} - ${proyecto.organizacion}`
+    form(method="POST", action="/donaciones/nueva")
+      if esAdmin
+        .campo
+          label(for="personaId") Donante Responsable (Modo Administrador):
+          select(name="personaId", id="personaId", required=true)
+            option(value="") Seleccione un donante registrado...
+            each donante in donantes
+              option(value=donante._id)= `${donante.nombre} (${donante.email})`
+      else
+        .campo
+          label Donante Autenticado:
+          input(type="hidden", name="personaId", value=personaUsuario ? personaUsuario._id : "")
+          .campo-estatico
+            strong= personaUsuario ? `${personaUsuario.nombre} (${personaUsuario.email})` : (usuario ? `${usuario.nombre} (${usuario.email})` : "Usuario Autenticado")
+            span.badge.badge-donante= usuario ? usuario.rol.toUpperCase() : "DONANTE"
 
-    label(for="monto") Monto a Donar ($):
-    input(type="number", name="monto", id="monto", min="1", step="any", placeholder="Ej: 5000", required)
+      .campo
+        label(for="proyectoId") Proyecto Comunitario Destino:
+        select(name="proyectoId", id="proyectoId", required=true)
+          option(value="") Seleccione una causa...
+          each proyecto in proyectos
+            option(value=proyecto._id)= `${proyecto.nombre} — ${proyecto.organizacion} (Meta: $${proyecto.montoMeta})`
 
-    button(type="submit") Confirmar Donacion en MongoDB
+      .campo
+        label(for="monto") Monto a Donar ($):
+        input(type="number", name="monto", id="monto", min="1", step="any", placeholder="Ej: 5000", required=true)
+
+      .acciones
+        button.btn-primary(type="submit") Confirmar Donación en MongoDB Atlas
+        |  
+        a.btn-secundario(href="/") Cancelar

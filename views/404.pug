@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  .contenedor-error
+    .caja.caja-error
+      h2 404 - Recurso No Encontrado
+      p= mensaje || "La página o el recurso al que intentás acceder no existe o fue movido."
+      p Te sugerimos volver a la página principal para continuar navegando.
+      .acciones
+        a.btn-primary(href="/") Volver al Inicio

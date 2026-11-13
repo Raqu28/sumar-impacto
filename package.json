@@ -1,7 +1,7 @@
 {
-  "name": "sumar-impacto-tp2",
-  "version": "2.0.0",
-  "description": "Plataforma comunitaria de donaciones Sumar Impacto - Entrega 2 con Node.js, Express, Pug, MongoDB y Mongoose",
+  "name": "sumar-impacto",
+  "version": "1.2.0",
+  "description": "Plataforma comunitaria de donaciones Sumar Impacto - Entrega Final v1.2.0 con Node.js, Express, Pug, MongoDB Atlas, Sesiones Seguras y WebSockets",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -15,15 +15,20 @@
     "mongoose",
     "mongodb",
     "pug",
-    "mvc"
+    "mvc",
+    "websockets",
+    "auth"
   ],
   "author": "pITzza & BirrAPI (Grupo 15) - IFTS 29",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "dotenv": "^16.4.5",
     "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
     "mongoose": "^8.8.0",
-    "pug": "^3.0.3"
+    "pug": "^3.0.3",
+    "socket.io": "^4.8.4"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"

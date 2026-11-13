@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  .contenedor-auth
+    .caja.caja-auth
+      h2 Iniciar Sesión en Sumar Impacto
+      p Ingrese sus credenciales para acceder a la gestión de aportes y causas comunitarias.
+
+      if error
+        .alerta.alerta-error
+          strong Error: 
+          span= error
+
+      if exito
+        .alerta.alerta-exito
+          strong ¡Listo! 
+          span= exito
+
+      form(action="/login", method="POST")
+        .campo
+          label(for="email") Correo Electrónico:
+          input#email(type="email", name="email", placeholder="ejemplo@sumarimpacto.org", required=true, autofocus=true)
+
+        .campo
+          label(for="password") Contraseña:
+          input#password(type="password", name="password", placeholder="Ingrese su contraseña", required=true)
+
+        .acciones
+          button.btn-primary(type="submit") Ingresar al Sistema
+
+      hr
+      .registro-link
+        p ¿No tenés cuenta todavía? 
+          a(href="/registro") Creá tu cuenta de usuario aquí.
