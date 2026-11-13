@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  .contenedor-auth
+    .caja.caja-auth
+      h2 Registro de Usuario
+      p Complete el formulario para crear una cuenta segura en Sumar Impacto.
+
+      if error
+        .alerta.alerta-error
+          strong Error: 
+          span= error
+
+      form(action="/registro", method="POST")
+        .campo
+          label(for="nombre") Nombre y Apellido:
+          input#nombre(type="text", name="nombre", placeholder="Ej: Laura Gómez", required=true, autofocus=true)
+
+        .campo
+          label(for="email") Correo Electrónico:
+          input#email(type="email", name="email", placeholder="laura@ejemplo.org", required=true)
+
+        .campo
+          label(for="password") Contraseña (mínimo 6 caracteres):
+          input#password(type="password", name="password", placeholder="••••••••", required=true, minlength="6")
+
+        .campo
+          label(for="rol") Rol en la Plataforma:
+          select#rol(name="rol")
+            option(value="donante", selected=true) Donante Solidario
+            option(value="responsable") Responsable de Proyecto
+
+        .acciones
+          button.btn-primary(type="submit") Registrar Cuenta
+
+      hr
+      .registro-link
+        p ¿Ya tenés cuenta registrada? 
+          a(href="/login") Iniciá sesión aquí.

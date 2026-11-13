@@ -7,17 +7,58 @@ html(lang="es")
     link(rel="stylesheet", href="/styles.css")
   body
     header
-      h1 Sumar Impacto
-      p Plataforma Comunitaria de Financiamiento Solidario (Grupo 15 - Comision 2A)
-      nav
-        a(href="/") Inicio
-        |  | 
-        a(href="/proyectos") Proyectos
-        |  | 
-        a(href="/donaciones/nueva") Nueva Donacion
+      .header-container
+        .brand
+          h1 Sumar Impacto
+          p.subtitulo Plataforma Comunitaria de Financiamiento Solidario (Grupo 15 - Comisión 2A)
+        nav.nav-bar
+          a(href="/") Inicio
+          |  | 
+          a(href="/proyectos") Proyectos
+          |  | 
+          a(href="/donaciones/nueva") Nueva Donación
+          |  | 
+          if usuario
+            span.usuario-tag
+              strong Hola, #{usuario.nombre} 
+              span.rol-pill (#{usuario.rol})
+            |  | 
+            a.btn-logout(href="/logout") Cerrar Sesión
+          else
+            a.btn-login(href="/login") Iniciar Sesión
+            |  | 
+            a.btn-registro(href="/registro") Registrarse
     hr
+    #live-alert-container
     main
       block content
     hr
     footer
-      p Desarrollo de Software Web - Backend | 2° Parcial (MongoDB & Mongoose) | IFTS N° 29 - 2C2026
+      p Desarrollo Web Backend | Entrega Final v1.2.0 (MongoDB Atlas, Sesiones y WebSockets) | IFTS N° 29 - 2C2026
+    
+    // Cliente Socket.IO para sincronizacion y notificaciones en tiempo real
+    script(src="/socket.io/socket.io.js")
+    script.
+      const socket = io();
+      socket.on("connect", () => {
+        console.log("[WebSocket] Conectado en tiempo real al servidor de Sumar Impacto");
+      });
+      socket.on("nueva_donacion", (data) => {
+        console.log("[WebSocket] Nueva donacion recibida:", data);
+        const alertBox = document.getElementById("live-alert-container");
+        if (alertBox) {
+          const toast = document.createElement("div");
+          toast.className = "alerta-toast";
+          toast.innerHTML = `🌟 <strong>¡Nuevo Aporte en Vivo!</strong> ${data.donanteNombre} acaba de donar <strong>$${data.monto}</strong> al proyecto <em>"${data.proyectoNombre}"</em>. Progreso actualizado: <strong>${data.progreso}%</strong>.`;
+          alertBox.prepend(toast);
+          setTimeout(() => { toast.remove(); }, 8000);
+        }
+        // Si estamos en la tabla de la Home, actualizamos la fila en caliente
+        const fila = document.getElementById("proyecto-" + data.proyectoId);
+        if (fila) {
+          const celdaRecaudado = fila.querySelector(".col-recaudado");
+          const celdaProgreso = fila.querySelector(".col-progreso");
+          if (celdaRecaudado) celdaRecaudado.textContent = "$" + data.nuevoRecaudado;
+          if (celdaProgreso) celdaProgreso.textContent = data.progreso + "%";
+        }
+      });
